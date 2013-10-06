@@ -8,5 +8,21 @@
 
 #import "TMViewController.h"
 
+@protocol TMDevicesViewControllerDelegate;
+
+
 @interface TMDevicesViewController : TMViewController
+
+@property (nonatomic, weak) id <TMDevicesViewControllerDelegate> delegate;
+
+@end
+
+
+@protocol TMDevicesViewControllerDelegate
+
+- (void)devicesViewController:(TMDevicesViewController *)viewController
+          didSelectPeripheral:(CBPeripheral *)peripheral;
+
+- (void)devicesViewControllerDidClose:(TMDevicesViewController *)viewController;
+
 @end

@@ -6,8 +6,6 @@
 //  Copyright (c) 2013 Appstruments. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 #import "TMAppDelegate.h"
 
 int main(int argc, char * argv[])

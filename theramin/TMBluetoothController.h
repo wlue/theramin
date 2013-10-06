@@ -6,12 +6,22 @@
 //  Copyright (c) 2013 Appstruments. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+typedef NS_ENUM(NSInteger, TMBluetoothMode) {
+    TMBluetoothModeCentral      = 0,
+    TMBluetoothModePeripheral   = 1
+};
+
 
 @interface TMBluetoothController : NSObject
+
+@property (nonatomic, assign) TMBluetoothMode mode;
 
 + (instancetype)sharedInstance;
 
 - (void)startScanning;
+- (void)stopScanning;
+
+- (void)startBroadcasting;
+- (void)stopBroadcasting;
 
 @end

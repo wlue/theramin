@@ -7,7 +7,7 @@
 //
 
 #import "TMAppDelegate.h"
-#import "TMDevicesViewController.h"
+#import "TMRootViewController.h"
 
 @implementation TMAppDelegate
 
@@ -15,7 +15,7 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIViewController *viewController = [[TMDevicesViewController alloc] init];
+    UIViewController *viewController = [[TMRootViewController alloc] init];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
 
     self.window.rootViewController = navController;

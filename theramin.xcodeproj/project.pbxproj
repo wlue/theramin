@@ -20,6 +20,16 @@
 		2534E6B21800D709007BE310 /* RXAbstractAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6AF1800D709007BE310 /* RXAbstractAPIController.m */; };
 		2534E6B31800D709007BE310 /* RXAbstractDataStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6B11800D709007BE310 /* RXAbstractDataStoreController.m */; };
 		2534E6B51800D86C007BE310 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E6B41800D86C007BE310 /* CoreData.framework */; };
+		2534E6B81800E2D3007BE310 /* TMRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6B71800E2D3007BE310 /* TMRootViewController.m */; };
+		2534E6BF1800EA2B007BE310 /* TMDevicesDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6BE1800EA2B007BE310 /* TMDevicesDataController.m */; };
+		2534E6C21800EAD5007BE310 /* TMDevicesAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6C11800EAD5007BE310 /* TMDevicesAPIController.m */; };
+		2534E6C5180106B7007BE310 /* Devices.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6C3180106B7007BE310 /* Devices.xcdatamodeld */; };
+		2534E6CC1801073B007BE310 /* NSManagedObject+RXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6C81801073B007BE310 /* NSManagedObject+RXAdditions.m */; };
+		2534E6CD1801073B007BE310 /* NSManagedObjectContext+RXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6CA1801073B007BE310 /* NSManagedObjectContext+RXAdditions.m */; };
+		2534E6CF18010742007BE310 /* RXModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6CE18010742007BE310 /* RXModel.m */; };
+		2534E6D21801076B007BE310 /* TMPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D11801076B007BE310 /* TMPeripheral.m */; };
+		2534E6D518010886007BE310 /* TMDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D418010886007BE310 /* TMDefinitions.m */; };
+		2534E6D8180108D0007BE310 /* UIView+RXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D7180108D0007BE310 /* UIView+RXAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +56,25 @@
 		2534E6B01800D709007BE310 /* RXAbstractDataStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAbstractDataStoreController.h; sourceTree = "<group>"; };
 		2534E6B11800D709007BE310 /* RXAbstractDataStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAbstractDataStoreController.m; sourceTree = "<group>"; };
 		2534E6B41800D86C007BE310 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2534E6B61800E2D3007BE310 /* TMRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMRootViewController.h; sourceTree = "<group>"; };
+		2534E6B71800E2D3007BE310 /* TMRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMRootViewController.m; sourceTree = "<group>"; };
+		2534E6BD1800EA2B007BE310 /* TMDevicesDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDevicesDataController.h; sourceTree = "<group>"; };
+		2534E6BE1800EA2B007BE310 /* TMDevicesDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDevicesDataController.m; sourceTree = "<group>"; };
+		2534E6C01800EAD5007BE310 /* TMDevicesAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDevicesAPIController.h; sourceTree = "<group>"; };
+		2534E6C11800EAD5007BE310 /* TMDevicesAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDevicesAPIController.m; sourceTree = "<group>"; };
+		2534E6C4180106B7007BE310 /* Devices.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Devices.xcdatamodel; sourceTree = "<group>"; };
+		2534E6C71801073B007BE310 /* NSManagedObject+RXAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+RXAdditions.h"; sourceTree = "<group>"; };
+		2534E6C81801073B007BE310 /* NSManagedObject+RXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+RXAdditions.m"; sourceTree = "<group>"; };
+		2534E6C91801073B007BE310 /* NSManagedObjectContext+RXAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+RXAdditions.h"; sourceTree = "<group>"; };
+		2534E6CA1801073B007BE310 /* NSManagedObjectContext+RXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+RXAdditions.m"; sourceTree = "<group>"; };
+		2534E6CB1801073B007BE310 /* RXModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXModel.h; sourceTree = "<group>"; };
+		2534E6CE18010742007BE310 /* RXModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXModel.m; sourceTree = "<group>"; };
+		2534E6D01801076B007BE310 /* TMPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMPeripheral.h; sourceTree = "<group>"; };
+		2534E6D11801076B007BE310 /* TMPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMPeripheral.m; sourceTree = "<group>"; };
+		2534E6D318010886007BE310 /* TMDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDefinitions.h; sourceTree = "<group>"; };
+		2534E6D418010886007BE310 /* TMDefinitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDefinitions.m; sourceTree = "<group>"; };
+		2534E6D6180108D0007BE310 /* UIView+RXAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RXAdditions.h"; sourceTree = "<group>"; };
+		2534E6D7180108D0007BE310 /* UIView+RXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RXAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +128,7 @@
 			children = (
 				2534E6A61800D161007BE310 /* Assets */,
 				2534E6AA1800D40F007BE310 /* 3rd Party */,
+				2534E6B91800E2D9007BE310 /* Abstract */,
 				2534E6A71800D166007BE310 /* Theramin */,
 				2534E6701800B069007BE310 /* Supporting Files */,
 			);
@@ -128,14 +158,14 @@
 		2534E6A71800D166007BE310 /* Theramin */ = {
 			isa = PBXGroup;
 			children = (
+				2534E6C618010703007BE310 /* Models */,
+				2534E6BC1800EA13007BE310 /* Data Controllers */,
+				2534E6BA1800E2F5007BE310 /* Controllers */,
+				2534E6BB1800E2FD007BE310 /* Theramin Screen */,
+				2534E6D318010886007BE310 /* TMDefinitions.h */,
+				2534E6D418010886007BE310 /* TMDefinitions.m */,
 				2534E6781800B069007BE310 /* TMAppDelegate.h */,
 				2534E6791800B069007BE310 /* TMAppDelegate.m */,
-				2534E6811800B069007BE310 /* TMViewController.h */,
-				2534E6821800B069007BE310 /* TMViewController.m */,
-				2534E6A11800B17D007BE310 /* TMDevicesViewController.h */,
-				2534E6A21800B17D007BE310 /* TMDevicesViewController.m */,
-				2534E6AB1800D4CA007BE310 /* TMBluetoothController.h */,
-				2534E6AC1800D4CA007BE310 /* TMBluetoothController.m */,
 			);
 			name = Theramin;
 			sourceTree = "<group>";
@@ -143,6 +173,7 @@
 		2534E6A81800D3FA007BE310 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				2534E6C3180106B7007BE310 /* Devices.xcdatamodeld */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -150,12 +181,69 @@
 		2534E6AA1800D40F007BE310 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				2534E6D6180108D0007BE310 /* UIView+RXAdditions.h */,
+				2534E6D7180108D0007BE310 /* UIView+RXAdditions.m */,
+				2534E6C71801073B007BE310 /* NSManagedObject+RXAdditions.h */,
+				2534E6C81801073B007BE310 /* NSManagedObject+RXAdditions.m */,
+				2534E6C91801073B007BE310 /* NSManagedObjectContext+RXAdditions.h */,
+				2534E6CA1801073B007BE310 /* NSManagedObjectContext+RXAdditions.m */,
+				2534E6CB1801073B007BE310 /* RXModel.h */,
+				2534E6CE18010742007BE310 /* RXModel.m */,
 				2534E6AE1800D709007BE310 /* RXAbstractAPIController.h */,
 				2534E6AF1800D709007BE310 /* RXAbstractAPIController.m */,
 				2534E6B01800D709007BE310 /* RXAbstractDataStoreController.h */,
 				2534E6B11800D709007BE310 /* RXAbstractDataStoreController.m */,
 			);
 			name = "3rd Party";
+			sourceTree = "<group>";
+		};
+		2534E6B91800E2D9007BE310 /* Abstract */ = {
+			isa = PBXGroup;
+			children = (
+				2534E6811800B069007BE310 /* TMViewController.h */,
+				2534E6821800B069007BE310 /* TMViewController.m */,
+			);
+			name = Abstract;
+			sourceTree = "<group>";
+		};
+		2534E6BA1800E2F5007BE310 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2534E6AB1800D4CA007BE310 /* TMBluetoothController.h */,
+				2534E6AC1800D4CA007BE310 /* TMBluetoothController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2534E6BB1800E2FD007BE310 /* Theramin Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2534E6B61800E2D3007BE310 /* TMRootViewController.h */,
+				2534E6B71800E2D3007BE310 /* TMRootViewController.m */,
+				2534E6A11800B17D007BE310 /* TMDevicesViewController.h */,
+				2534E6A21800B17D007BE310 /* TMDevicesViewController.m */,
+			);
+			name = "Theramin Screen";
+			sourceTree = "<group>";
+		};
+		2534E6BC1800EA13007BE310 /* Data Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				2534E6BD1800EA2B007BE310 /* TMDevicesDataController.h */,
+				2534E6BE1800EA2B007BE310 /* TMDevicesDataController.m */,
+				2534E6C01800EAD5007BE310 /* TMDevicesAPIController.h */,
+				2534E6C11800EAD5007BE310 /* TMDevicesAPIController.m */,
+			);
+			name = "Data Controllers";
+			sourceTree = "<group>";
+		};
+		2534E6C618010703007BE310 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2534E6D01801076B007BE310 /* TMPeripheral.h */,
+				2534E6D11801076B007BE310 /* TMPeripheral.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,11 +315,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2534E6BF1800EA2B007BE310 /* TMDevicesDataController.m in Sources */,
+				2534E6CF18010742007BE310 /* RXModel.m in Sources */,
 				2534E6AD1800D4CA007BE310 /* TMBluetoothController.m in Sources */,
 				2534E6831800B069007BE310 /* TMViewController.m in Sources */,
+				2534E6D21801076B007BE310 /* TMPeripheral.m in Sources */,
 				2534E6B21800D709007BE310 /* RXAbstractAPIController.m in Sources */,
+				2534E6C5180106B7007BE310 /* Devices.xcdatamodeld in Sources */,
+				2534E6D518010886007BE310 /* TMDefinitions.m in Sources */,
 				2534E6B31800D709007BE310 /* RXAbstractDataStoreController.m in Sources */,
+				2534E6C21800EAD5007BE310 /* TMDevicesAPIController.m in Sources */,
 				2534E6761800B069007BE310 /* main.m in Sources */,
+				2534E6B81800E2D3007BE310 /* TMRootViewController.m in Sources */,
+				2534E6CC1801073B007BE310 /* NSManagedObject+RXAdditions.m in Sources */,
+				2534E6CD1801073B007BE310 /* NSManagedObjectContext+RXAdditions.m in Sources */,
+				2534E6D8180108D0007BE310 /* UIView+RXAdditions.m in Sources */,
 				2534E6A31800B17D007BE310 /* TMDevicesViewController.m in Sources */,
 				2534E67A1800B069007BE310 /* TMAppDelegate.m in Sources */,
 			);
@@ -323,6 +421,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
 				INFOPLIST_FILE = "theramin/theramin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -337,6 +436,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
 				INFOPLIST_FILE = "theramin/theramin-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -361,8 +461,22 @@
 				2534E69D1800B069007BE310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2534E6C3180106B7007BE310 /* Devices.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2534E6C4180106B7007BE310 /* Devices.xcdatamodel */,
+			);
+			currentVersion = 2534E6C4180106B7007BE310 /* Devices.xcdatamodel */;
+			path = Devices.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2534E65E1800B069007BE310 /* Project object */;
 }

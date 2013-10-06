@@ -106,7 +106,9 @@
     self.managedObjectContext = nil;
     self.persistentStoreCoordinator = nil;
 
-    [[NSFileManager defaultManager] removeItemAtPath:self.persistentStorePath error:NULL];
+    if (self.persistentStorePath) {
+        [[NSFileManager defaultManager] removeItemAtPath:self.persistentStorePath error:NULL];
+    }
 }
 
 
@@ -144,19 +146,22 @@
 
 - (void)loadPersistentStoreCoordinator
 {
-    NSURL *storeURL = [NSURL fileURLWithPath:self.persistentStorePath];
+    NSURL *storeURL = nil;
+    if (self.persistentStorePath) {
+        storeURL = [NSURL fileURLWithPath:self.persistentStorePath];
 
-    // If there is a model incompatibility, then figure out if we want to delete the persistent store.
-    if ([self _shouldClearPersistentStoreOnModelUpdate]) {
-        Class persistentStoreClass = [[NSPersistentStoreCoordinator registeredStoreTypes][self.storeType] pointerValue];
-        NSDictionary *metadata = [persistentStoreClass metadataForPersistentStoreWithURL:storeURL error:NULL];
+        // If there is a model incompatibility, then figure out if we want to delete the persistent store.
+        if ([self _shouldClearPersistentStoreOnModelUpdate]) {
+            Class persistentStoreClass = [[NSPersistentStoreCoordinator registeredStoreTypes][self.storeType] pointerValue];
+            NSDictionary *metadata = [persistentStoreClass metadataForPersistentStoreWithURL:storeURL error:NULL];
 
-        // Delete the persistent store file if there is an incompatibility.
-        if (metadata && ![self.managedObjectModel isConfiguration:nil compatibleWithStoreMetadata:metadata]) {
+            // Delete the persistent store file if there is an incompatibility.
+            if (metadata && ![self.managedObjectModel isConfiguration:nil compatibleWithStoreMetadata:metadata]) {
 
-            NSLog(@"Notice: Model incompatibility or forced deletion for %@ data store is triggering a persistent store deletion.", [self class]);
-            [[NSFileManager defaultManager] removeItemAtPath:self.persistentStorePath error:NULL];
-            NSLog(@"Notice: Removed %@", self.persistentStorePath);
+                NSLog(@"Notice: Model incompatibility or forced deletion for %@ data store is triggering a persistent store deletion.", [self class]);
+                [[NSFileManager defaultManager] removeItemAtPath:self.persistentStorePath error:NULL];
+                NSLog(@"Notice: Removed %@", self.persistentStorePath);
+            }
         }
     }
 
