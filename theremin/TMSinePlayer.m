@@ -27,6 +27,7 @@
 
     _playing = NO;
     _theta = 0.0;
+    _volume = 1.0;
     _frequency = 440.0;
     _sampleRate = 44100.0;
 
@@ -56,7 +57,7 @@ static OSStatus GenerateTone(
  
     Float32 *buffer = (Float32 *)audio->mBuffers[0].mData;
     for (UInt32 frame = 0; frame < frames; frame++) {
-        buffer[frame] = (Float32)round((sin(theta) * amplitude));
+        buffer[frame] = (Float32)round((sin(theta) * amplitude * THIS->_volume));
 
         theta += thetaIncrement;
         if (theta > 2.0 * M_PI) {
@@ -70,4 +71,3 @@ static OSStatus GenerateTone(
 }
 
 @end
-

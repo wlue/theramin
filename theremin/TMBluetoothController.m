@@ -10,20 +10,30 @@
 #import "TMPeripheral.h"
 #import "TMDevicesAPIController.h"
 
+#pragma mark - Definitions
+
+NSString *const TMBluetoothPeripheralConnectedNotification = @"TMBluetoothPeripheralConnectedNotification";
+NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPeripheralDisconnectedNotification";
+
+
 #pragma mark - Private Interface
 
-@interface TMBluetoothController () <CBCentralManagerDelegate, CBPeripheralDelegate, CBPeripheralManagerDelegate>
+@interface TMBluetoothController () <CBCentralManagerDelegate, CBPeripheralManagerDelegate>
 
 @property (nonatomic, strong) CBCentralManager *central;
 @property (nonatomic, strong) CBPeripheralManager *peripheral;
 
+@property (nonatomic, strong) NSTimer *subTimer;
+@property (nonatomic, strong) NSMutableDictionary *peripheralSubscribers;
+
 @property (nonatomic, strong) NSMutableDictionary *deviceMap;
+@property (nonatomic, strong) NSMutableArray *connectedDevices;
 
 @property (nonatomic, strong) dispatch_queue_t queue;
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
 
-- (void)updatePeripheral:(CBPeripheral *)peripheral withRSSI:(NSNumber *)RSSI;
+- (void)subscriptionFired:(NSTimer *)timer;
 
 @end
 
@@ -55,7 +65,11 @@
 
     self.queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
     self.context = [[TMDevicesAPIController sharedInstance] managedObjectContext];
+
+    self.subTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(subscriptionFired:) userInfo:nil repeats:YES];
+    self.peripheralSubscribers = [[NSMutableDictionary alloc] init];
     self.deviceMap = [[NSMutableDictionary alloc] init];
+    self.connectedDevices = [[NSMutableArray alloc] init];
 
     return self;
 }
@@ -65,20 +79,49 @@
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
 {
     NSLog(@"Central updated state: %@", @(central.state));
+
+    if (central.state == CBCentralManagerStatePoweredOn) {
+        NSLog(@"Start scanning for peripherals.");
+
+        NSDictionary *options = @{
+            CBCentralManagerScanOptionAllowDuplicatesKey: @NO
+        };
+
+        [self.central scanForPeripheralsWithServices:nil options:options];
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"Connected with peripheral: %@", peripheral);
 
-    peripheral.delegate = self;
-    [peripheral readRSSI];
+    [self.connectedDevices addObject:peripheral];
 
+    NSDictionary *userInfo = @{
+        @"peripheral": peripheral
+    };
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TMBluetoothPeripheralConnectedNotification
+                                                        object:self
+                                                      userInfo:userInfo];
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"Failed to connect with peripheral: %@", [error localizedDescription]);
+}
+
+- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSDictionary *userInfo = @{
+        @"peripheral": peripheral
+    };
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:TMBluetoothPeripheralDisconnectedNotification
+                                                        object:self
+                                                      userInfo:userInfo];
+
+    [self.connectedDevices removeObject:peripheral];
 }
 
 - (void)centralManager:(CBCentralManager *)central
@@ -90,6 +133,8 @@
 //    NSLog(@"RSSI: %@", RSSI);
 
     NSString *UUID = [peripheral.identifier UUIDString];
+    self.deviceMap[UUID] = peripheral;
+
     [self.context performBlock:^{
         NSFetchRequest *request = [TMPeripheral createFetchRequest];
         request.predicate = [NSPredicate predicateWithFormat:@"%K == %@", RXTypedKeyPath(TMPeripheral, uuid), UUID];
@@ -101,13 +146,10 @@
                 model.name = peripheral.name;
                 model.uuid = UUID;
                 model.rssi = RSSI;
-
-                self.deviceMap[UUID] = peripheral;
             }
         } else {
             if (RSSI.integerValue == 127) {
                 [self.context deleteObject:model];
-                [self.deviceMap removeObjectForKey:model.uuid];
             } else {
                 model.rssi = RSSI;
             }
@@ -120,7 +162,7 @@
 - (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
 {
     if (error) {
-        NSLog(@"Peripheral RSSI Error: %@", [error localizedDescription]);
+        NSLog(@"Peripheral RSSI Error: %@", error);
         return;
     }
 
@@ -177,6 +219,16 @@
 
 #pragma mark - Public Methods
 
+- (void)subscribeObject:(id)object toRSSIForPeripheral:(CBPeripheral *)peripheral
+{
+    self.peripheralSubscribers[peripheral.identifier.UUIDString] = object;
+}
+
+- (void)unsubscribeObject:(id)object toRSSIForPeripheral:(CBPeripheral *)peripheral
+{
+    self.peripheralSubscribers[peripheral.identifier.UUIDString] = nil;
+}
+
 #pragma mark Central Mode
 
 - (void)startScanning
@@ -184,15 +236,15 @@
     if (!self.central) {
         self.central = [[CBCentralManager alloc] initWithDelegate:self
                                                             queue:self.queue];
+    } else {
+        NSLog(@"Start scanning for peripherals.");
+
+        NSDictionary *options = @{
+            CBCentralManagerScanOptionAllowDuplicatesKey: @NO
+        };
+
+        [self.central scanForPeripheralsWithServices:nil options:options];
     }
-
-    NSLog(@"Start scanning for peripherals.");
-
-    NSDictionary *options = @{
-        CBCentralManagerScanOptionAllowDuplicatesKey: @YES
-    };
-
-    [self.central scanForPeripheralsWithServices:nil options:options];
 }
 
 - (void)stopScanning
@@ -232,6 +284,14 @@
 {
     if (!self.peripheral) {
         self.peripheral = [[CBPeripheralManager alloc] initWithDelegate:self queue:self.queue];
+    } else {
+        NSLog(@"Begin advertising.");
+
+        CBUUID *UUID = [CBUUID UUIDWithString:TM_PERIPHERAL_UUID];
+        [self.peripheral startAdvertising:@{
+            CBAdvertisementDataLocalNameKey: @"Theremin",
+            CBAdvertisementDataServiceUUIDsKey: @[UUID]
+        }];
     }
 }
 
@@ -243,9 +303,15 @@
 
 #pragma mark - Private Methods
 
-- (void)updatePeripheral:(CBPeripheral *)peripheral withRSSI:(NSNumber *)RSSI
+- (void)subscriptionFired:(NSTimer *)timer
 {
-    
+    for (NSString *UUID in self.peripheralSubscribers.allKeys) {
+        CBPeripheral *peripheral = self.deviceMap[UUID];
+        if (peripheral) {
+            id <TMBluetoothPeripheralSubscriber> subscriber = self.peripheralSubscribers[UUID];
+            [subscriber bluetoothController:self didUpdatePeripheral:peripheral];
+        }
+    }
 }
 
 @end

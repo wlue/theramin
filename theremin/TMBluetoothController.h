@@ -6,19 +6,30 @@
 //  Copyright (c) 2013 Appstruments. All rights reserved.
 //
 
+@class TMPeripheral;
+@protocol TMBluetoothPeripheralSubscriber;
+
+#pragma mark - Definitions
+
+extern NSString *const TMBluetoothPeripheralConnectedNotification;
+extern NSString *const TMBluetoothPeripheralDisconnectedNotification;
+
 typedef NS_ENUM(NSInteger, TMBluetoothMode) {
     TMBluetoothModeCentral      = 0,
     TMBluetoothModePeripheral   = 1
 };
 
 
-@class TMPeripheral;
+#pragma mark - Public Interface
 
 @interface TMBluetoothController : NSObject
 
 @property (nonatomic, assign) TMBluetoothMode mode;
 
 + (instancetype)sharedInstance;
+
+- (void)subscribeObject:(id <TMBluetoothPeripheralSubscriber>)object toRSSIForPeripheral:(CBPeripheral *)peripheral;
+- (void)unsubscribeObject:(id <TMBluetoothPeripheralSubscriber>)object toRSSIForPeripheral:(CBPeripheral *)peripheral;
 
 - (void)startScanning;
 - (void)stopScanning;
@@ -27,5 +38,14 @@ typedef NS_ENUM(NSInteger, TMBluetoothMode) {
 
 - (void)startBroadcasting;
 - (void)stopBroadcasting;
+
+@end
+
+
+#pragma mark - Subscriber Protocol
+
+@protocol TMBluetoothPeripheralSubscriber <NSObject>
+
+- (void)bluetoothController:(TMBluetoothController *)controller didUpdatePeripheral:(CBPeripheral *)peripheral;
 
 @end

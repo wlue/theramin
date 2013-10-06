@@ -43,7 +43,8 @@
         return nil;
     }
 
-    self.frequency = 440.0;
+    self.volume = 0.0f;
+
     self.audioController =
         [[AEAudioController alloc] initWithAudioDescription:
             [AEAudioController interleaved16BitStereoAudioDescription]];
@@ -67,16 +68,24 @@
     self.player.frequency = frequency;
 }
 
+- (void)setVolume:(float)volume
+{
+    _volume = volume;
+    self.player.volume = volume;
+}
+
 #pragma mark - Public Methods
 
 - (void)play
 {
+    self.player.playing = YES;
     self.frequency = 440.0;
+    self.volume = 0.0;
 }
 
 - (void)stop
 {
-
+    self.player.playing = NO;
 }
 
 @end

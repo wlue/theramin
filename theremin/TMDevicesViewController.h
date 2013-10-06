@@ -14,6 +14,7 @@
 @interface TMDevicesViewController : TMViewController
 
 @property (nonatomic, weak) id <TMDevicesViewControllerDelegate> delegate;
+@property (nonatomic, strong) id userInfo;
 
 @end
 

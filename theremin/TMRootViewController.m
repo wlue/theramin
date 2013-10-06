@@ -14,10 +14,14 @@
 
 #pragma mark - Private Interface
 
-@interface TMRootViewController () <TMDevicesViewControllerDelegate>
+@interface TMRootViewController () <TMDevicesViewControllerDelegate, TMBluetoothPeripheralSubscriber, CBPeripheralDelegate>
+
+@property (nonatomic, strong) CBPeripheral *pitchPeripheral;
+@property (nonatomic, strong) UISlider *volumeSlider;
 
 - (void)devicesButtonPressed:(id)sender;
 - (void)modeSwitchDidChange:(id)sender;
+- (void)volumeSliderChanged:(id)sender;
 
 @end
 
@@ -45,6 +49,20 @@
 {
     [self loadMainView];
     self.view.backgroundColor = [UIColor whiteColor];
+
+    UISlider *slider = [[UISlider alloc] init];
+    slider.autoresizingMask =
+        UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
+        UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    slider.frameSize = CGSizeMake(280.0f, 50.0f);
+    slider.center = self.view.center;
+    slider.minimumValue = 0.0f;
+    slider.maximumValue = 1.0f;
+
+    [slider addTarget:self action:@selector(volumeSliderChanged:) forControlEvents:UIControlEventValueChanged];
+
+    [self.view addSubview:slider];
+    self.volumeSlider = slider;
 }
 
 - (void)viewDidLoad
@@ -70,6 +88,7 @@
     [super viewDidAppear:animated];
 
     [[TMEngineController sharedInstance] play];
+    self.volumeSlider.value = [[TMEngineController sharedInstance] volume];
 }
 
 #pragma mark - TMDevicesViewControllerDelegate
@@ -77,12 +96,37 @@
 - (void)devicesViewController:(TMDevicesViewController *)viewController
           didSelectPeripheral:(CBPeripheral *)peripheral
 {
+    NSLog(@"Selected Peripheral: %@", peripheral);
 
+    peripheral.delegate = self;
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    [[TMBluetoothController sharedInstance] subscribeObject:self toRSSIForPeripheral:peripheral];
 }
 
 - (void)devicesViewControllerDidClose:(TMDevicesViewController *)viewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - TMBluetoothPeripheralSubscriber
+
+- (void)bluetoothController:(TMBluetoothController *)controller didUpdatePeripheral:(CBPeripheral *)peripheral
+{
+//    NSLog(@"Received sub message from %@ with RSSI %@", peripheral, peripheral.RSSI);
+    [peripheral readRSSI];
+}
+
+#pragma mark - CBPeripheralDelegate
+
+- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"Peripheral RSSI Error: %@", error);
+        return;
+    }
+
+    NSLog(@"Peripheral updated RSSI: %@", peripheral.RSSI);
 }
 
 #pragma mark - Private Methods
@@ -113,6 +157,13 @@
         controller.mode = TMBluetoothModePeripheral;
         [controller startBroadcasting];
     }
+}
+
+- (void)volumeSliderChanged:(id)sender
+{
+    UISlider *slider = sender;
+
+    [[TMEngineController sharedInstance] setVolume:slider.value];
 }
 
 @end

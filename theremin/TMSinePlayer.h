@@ -9,6 +9,8 @@
 @interface TMSinePlayer : NSObject <AEAudioPlayable>
 
 @property (nonatomic, assign) BOOL playing;
+
 @property (nonatomic, assign) double frequency;
+@property (nonatomic, assign) float volume;
 
 @end

@@ -22,6 +22,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
+- (void)deviceConnected:(NSNotification *)notification;
+- (void)deviceDisconnected:(NSNotification *)notification;
+
 - (void)doneButtonPressed:(id)sender;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
@@ -59,7 +62,22 @@
     self.fetchedResultsController = fetchedResultsController;
     [self.fetchedResultsController performFetch:NULL];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceConnected:)
+                                                 name:TMBluetoothPeripheralConnectedNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceDisconnected:)
+                                                 name:TMBluetoothPeripheralDisconnectedNotification
+                                               object:nil];
+
     return self;
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UIViewController
@@ -67,6 +85,7 @@
 - (void)loadView
 {
     [super loadMainView];
+
     self.view.backgroundColor = [UIColor whiteColor];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Done"
@@ -95,8 +114,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-
-    [[TMBluetoothController sharedInstance] stopScanning];
 }
 
 #pragma mark - UITableViewDelegate
@@ -192,6 +209,23 @@
 #pragma mark - Public Methods
 
 #pragma mark - Private Methods
+
+- (void)deviceConnected:(NSNotification *)notification
+{
+    CBPeripheral *peripheral = notification.userInfo[@"peripheral"];
+    if (!peripheral) {
+        NSLog(@"Error: No peripheral sent through notification.");
+        return;
+    }
+
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.delegate devicesViewController:self didSelectPeripheral:peripheral];
+    }];
+}
+
+- (void)deviceDisconnected:(NSNotification *)notification
+{
+}
 
 - (void)doneButtonPressed:(id)sender
 {
