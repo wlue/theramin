@@ -54,13 +54,13 @@
 		2522DA20180146880077C7F1 /* TMEngineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMEngineController.m; sourceTree = "<group>"; };
 		2522DA22180147D90077C7F1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2522DA24180147DE0077C7F1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		2534E6661800B069007BE310 /* theramin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theramin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2534E6661800B069007BE310 /* theremin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theremin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2534E6691800B069007BE310 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2534E66B1800B069007BE310 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2534E66D1800B069007BE310 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2534E6711800B069007BE310 /* theramin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "theramin-Info.plist"; sourceTree = "<group>"; };
+		2534E6711800B069007BE310 /* theremin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "theremin-Info.plist"; sourceTree = "<group>"; };
 		2534E6751800B069007BE310 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2534E6771800B069007BE310 /* theramin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theramin-Prefix.pch"; sourceTree = "<group>"; };
+		2534E6771800B069007BE310 /* theremin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theremin-Prefix.pch"; sourceTree = "<group>"; };
 		2534E6781800B069007BE310 /* TMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMAppDelegate.h; sourceTree = "<group>"; };
 		2534E6791800B069007BE310 /* TMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMAppDelegate.m; sourceTree = "<group>"; };
 		2534E6811800B069007BE310 /* TMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMViewController.h; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 		2534E65D1800B069007BE310 = {
 			isa = PBXGroup;
 			children = (
-				2534E66F1800B069007BE310 /* Theramin */,
+				2534E66F1800B069007BE310 /* Theremin */,
 				2534E6681800B069007BE310 /* Frameworks */,
 				2534E6671800B069007BE310 /* Products */,
 			);
@@ -155,7 +155,7 @@
 		2534E6671800B069007BE310 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2534E6661800B069007BE310 /* theramin.app */,
+				2534E6661800B069007BE310 /* theremin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,26 +177,26 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2534E66F1800B069007BE310 /* Theramin */ = {
+		2534E66F1800B069007BE310 /* Theremin */ = {
 			isa = PBXGroup;
 			children = (
 				2534E6A61800D161007BE310 /* Assets */,
 				2534E6AA1800D40F007BE310 /* 3rd Party */,
 				2534E6B91800E2D9007BE310 /* Abstract */,
-				2534E6A71800D166007BE310 /* Theramin */,
+				2534E6A71800D166007BE310 /* Theremin */,
 				2534E6701800B069007BE310 /* Supporting Files */,
 			);
-			name = Theramin;
-			path = theramin;
+			name = Theremin;
+			path = theremin;
 			sourceTree = "<group>";
 		};
 		2534E6701800B069007BE310 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				2534E6A81800D3FA007BE310 /* Core Data */,
-				2534E6711800B069007BE310 /* theramin-Info.plist */,
+				2534E6711800B069007BE310 /* theremin-Info.plist */,
 				2534E6751800B069007BE310 /* main.m */,
-				2534E6771800B069007BE310 /* theramin-Prefix.pch */,
+				2534E6771800B069007BE310 /* theremin-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -209,20 +209,20 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
-		2534E6A71800D166007BE310 /* Theramin */ = {
+		2534E6A71800D166007BE310 /* Theremin */ = {
 			isa = PBXGroup;
 			children = (
 				2522DA1E1801467F0077C7F1 /* Engine */,
 				2534E6C618010703007BE310 /* Models */,
 				2534E6BC1800EA13007BE310 /* Data Controllers */,
 				2534E6BA1800E2F5007BE310 /* Controllers */,
-				2534E6BB1800E2FD007BE310 /* Theramin Screen */,
+				2534E6BB1800E2FD007BE310 /* Theremin Screen */,
 				2534E6D318010886007BE310 /* TMDefinitions.h */,
 				2534E6D418010886007BE310 /* TMDefinitions.m */,
 				2534E6781800B069007BE310 /* TMAppDelegate.h */,
 				2534E6791800B069007BE310 /* TMAppDelegate.m */,
 			);
-			name = Theramin;
+			name = Theremin;
 			sourceTree = "<group>";
 		};
 		2534E6A81800D3FA007BE310 /* Core Data */ = {
@@ -270,7 +270,7 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		2534E6BB1800E2FD007BE310 /* Theramin Screen */ = {
+		2534E6BB1800E2FD007BE310 /* Theremin Screen */ = {
 			isa = PBXGroup;
 			children = (
 				2534E6B61800E2D3007BE310 /* TMRootViewController.h */,
@@ -278,7 +278,7 @@
 				2534E6A11800B17D007BE310 /* TMDevicesViewController.h */,
 				2534E6A21800B17D007BE310 /* TMDevicesViewController.m */,
 			);
-			name = "Theramin Screen";
+			name = "Theremin Screen";
 			sourceTree = "<group>";
 		};
 		2534E6BC1800EA13007BE310 /* Data Controllers */ = {
@@ -304,9 +304,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2534E6651800B069007BE310 /* theramin */ = {
+		2534E6651800B069007BE310 /* theremin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2534E69B1800B069007BE310 /* Build configuration list for PBXNativeTarget "theramin" */;
+			buildConfigurationList = 2534E69B1800B069007BE310 /* Build configuration list for PBXNativeTarget "theremin" */;
 			buildPhases = (
 				2534E6621800B069007BE310 /* Sources */,
 				2534E6631800B069007BE310 /* Frameworks */,
@@ -316,9 +316,9 @@
 			);
 			dependencies = (
 			);
-			name = theramin;
-			productName = theramin;
-			productReference = 2534E6661800B069007BE310 /* theramin.app */;
+			name = theremin;
+			productName = theremin;
+			productReference = 2534E6661800B069007BE310 /* theremin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -336,7 +336,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2534E6611800B069007BE310 /* Build configuration list for PBXProject "theramin" */;
+			buildConfigurationList = 2534E6611800B069007BE310 /* Build configuration list for PBXProject "theremin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -355,7 +355,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				2534E6651800B069007BE310 /* theramin */,
+				2534E6651800B069007BE310 /* theremin */,
 			);
 		};
 /* End PBXProject section */
@@ -491,15 +491,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
+				GCC_PREFIX_HEADER = "theremin/theremin-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					Frameworks/TheAmazingAudioEngine,
 				);
-				INFOPLIST_FILE = "theramin/theramin-Info.plist";
+				INFOPLIST_FILE = "theremin/theremin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = theremin;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -511,15 +511,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
+				GCC_PREFIX_HEADER = "theremin/theremin-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					Frameworks/TheAmazingAudioEngine,
 				);
-				INFOPLIST_FILE = "theramin/theramin-Info.plist";
+				INFOPLIST_FILE = "theremin/theremin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = theremin;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -527,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2534E6611800B069007BE310 /* Build configuration list for PBXProject "theramin" */ = {
+		2534E6611800B069007BE310 /* Build configuration list for PBXProject "theremin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2534E6991800B069007BE310 /* Debug */,
@@ -536,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2534E69B1800B069007BE310 /* Build configuration list for PBXNativeTarget "theramin" */ = {
+		2534E69B1800B069007BE310 /* Build configuration list for PBXNativeTarget "theremin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2534E69C1800B069007BE310 /* Debug */,

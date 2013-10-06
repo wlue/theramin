@@ -49,7 +49,14 @@
 
 #pragma mark - Public Methods
 
-- (void)play;
-- (void)stop;
+- (void)play
+{
+
+}
+
+- (void)stop
+{
+
+}
 
 @end

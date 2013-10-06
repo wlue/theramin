@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2534E6651800B069007BE310"
-               BuildableName = "theramin.app"
-               BlueprintName = "theramin"
-               ReferencedContainer = "container:theramin.xcodeproj">
+               BuildableName = "theremin.app"
+               BlueprintName = "theremin"
+               ReferencedContainer = "container:theremin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "2534E6891800B069007BE310"
                BuildableName = "theraminTests.xctest"
                BlueprintName = "theraminTests"
-               ReferencedContainer = "container:theramin.xcodeproj">
+               ReferencedContainer = "container:theremin.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2534E6651800B069007BE310"
-            BuildableName = "theramin.app"
-            BlueprintName = "theramin"
-            ReferencedContainer = "container:theramin.xcodeproj">
+            BuildableName = "theremin.app"
+            BlueprintName = "theremin"
+            ReferencedContainer = "container:theremin.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2534E6651800B069007BE310"
-            BuildableName = "theramin.app"
-            BlueprintName = "theramin"
-            ReferencedContainer = "container:theramin.xcodeproj">
+            BuildableName = "theremin.app"
+            BlueprintName = "theremin"
+            ReferencedContainer = "container:theremin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2534E6651800B069007BE310"
-            BuildableName = "theramin.app"
-            BlueprintName = "theramin"
-            ReferencedContainer = "container:theramin.xcodeproj">
+            BuildableName = "theremin.app"
+            BlueprintName = "theremin"
+            ReferencedContainer = "container:theremin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
