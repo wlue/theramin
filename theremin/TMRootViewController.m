@@ -7,6 +7,7 @@
 //
 
 #import "TMRootViewController.h"
+#import "TMEngineController.h"
 #import "TMDevicesViewController.h"
 #import "TMBluetoothController.h"
 
@@ -62,6 +63,13 @@
                                                                      target:self
                                                                      action:@selector(devicesButtonPressed:)];
     self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
+    [[TMEngineController sharedInstance] play];
 }
 
 #pragma mark - TMDevicesViewControllerDelegate

@@ -9,6 +9,7 @@
 @interface TMEngineController : NSObject
 
 @property (nonatomic, strong) AEAudioController *audioController;
+@property (nonatomic, assign) double frequency;
 
 + (instancetype)sharedInstance;
 

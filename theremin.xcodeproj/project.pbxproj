@@ -35,6 +35,7 @@
 		2534E6D21801076B007BE310 /* TMPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D11801076B007BE310 /* TMPeripheral.m */; };
 		2534E6D518010886007BE310 /* TMDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D418010886007BE310 /* TMDefinitions.m */; };
 		2534E6D8180108D0007BE310 /* UIView+RXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D7180108D0007BE310 /* UIView+RXAdditions.m */; };
+		25DFD9AD1801502600111DD6 /* TMSinePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25DFD9AC1801502600111DD6 /* TMSinePlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		2534E6D418010886007BE310 /* TMDefinitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDefinitions.m; sourceTree = "<group>"; };
 		2534E6D6180108D0007BE310 /* UIView+RXAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RXAdditions.h"; sourceTree = "<group>"; };
 		2534E6D7180108D0007BE310 /* UIView+RXAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RXAdditions.m"; sourceTree = "<group>"; };
+		25DFD9AB1801502600111DD6 /* TMSinePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMSinePlayer.h; sourceTree = "<group>"; };
+		25DFD9AC1801502600111DD6 /* TMSinePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMSinePlayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +142,8 @@
 			children = (
 				2522DA1F180146880077C7F1 /* TMEngineController.h */,
 				2522DA20180146880077C7F1 /* TMEngineController.m */,
+				25DFD9AB1801502600111DD6 /* TMSinePlayer.h */,
+				25DFD9AC1801502600111DD6 /* TMSinePlayer.m */,
 			);
 			name = Engine;
 			sourceTree = "<group>";
@@ -402,6 +407,7 @@
 				2534E6CC1801073B007BE310 /* NSManagedObject+RXAdditions.m in Sources */,
 				2534E6CD1801073B007BE310 /* NSManagedObjectContext+RXAdditions.m in Sources */,
 				2534E6D8180108D0007BE310 /* UIView+RXAdditions.m in Sources */,
+				25DFD9AD1801502600111DD6 /* TMSinePlayer.m in Sources */,
 				2534E6A31800B17D007BE310 /* TMDevicesViewController.m in Sources */,
 				2534E67A1800B069007BE310 /* TMAppDelegate.m in Sources */,
 			);
