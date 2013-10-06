@@ -8,22 +8,36 @@
 
 #import "TMViewController.h"
 
-@interface TMViewController ()
 
+#pragma mark - Private Interface
+
+@interface TMViewController ()
 @end
 
+
+#pragma mark - Implementation
+
 @implementation TMViewController
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
+#pragma mark - Public Methods
+
+- (void)loadMainView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self loadMainViewWithFrame:[[UIScreen mainScreen] applicationFrame]];
+}
+
+- (void)loadMainViewWithFrame:(CGRect)frame
+{
+    UIView *view = [[UIView alloc] initWithFrame:frame];
+    view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    self.view = view;
 }
 
 @end

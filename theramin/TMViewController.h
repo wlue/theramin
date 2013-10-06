@@ -6,8 +6,9 @@
 //  Copyright (c) 2013 Appstruments. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface TMViewController : UIViewController
+
+- (void)loadMainView;
+- (void)loadMainViewWithFrame:(CGRect)frame;
 
 @end

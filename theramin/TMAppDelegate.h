@@ -6,10 +6,9 @@
 //  Copyright (c) 2013 Appstruments. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
 @interface TMAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, strong) UIWindow *window;
+@property (nonatomic, strong) UIViewController *rootViewController;
 
 @end

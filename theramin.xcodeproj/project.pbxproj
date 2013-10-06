@@ -10,29 +10,17 @@
 		2534E66A1800B069007BE310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E6691800B069007BE310 /* Foundation.framework */; };
 		2534E66C1800B069007BE310 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E66B1800B069007BE310 /* CoreGraphics.framework */; };
 		2534E66E1800B069007BE310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E66D1800B069007BE310 /* UIKit.framework */; };
-		2534E6741800B069007BE310 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2534E6721800B069007BE310 /* InfoPlist.strings */; };
 		2534E6761800B069007BE310 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6751800B069007BE310 /* main.m */; };
 		2534E67A1800B069007BE310 /* TMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6791800B069007BE310 /* TMAppDelegate.m */; };
-		2534E67D1800B069007BE310 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2534E67B1800B069007BE310 /* Main_iPhone.storyboard */; };
-		2534E6801800B069007BE310 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2534E67E1800B069007BE310 /* Main_iPad.storyboard */; };
 		2534E6831800B069007BE310 /* TMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6821800B069007BE310 /* TMViewController.m */; };
 		2534E6851800B069007BE310 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2534E6841800B069007BE310 /* Images.xcassets */; };
-		2534E68C1800B069007BE310 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E68B1800B069007BE310 /* XCTest.framework */; };
-		2534E68D1800B069007BE310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E6691800B069007BE310 /* Foundation.framework */; };
-		2534E68E1800B069007BE310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E66D1800B069007BE310 /* UIKit.framework */; };
-		2534E6961800B069007BE310 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2534E6941800B069007BE310 /* InfoPlist.strings */; };
-		2534E6981800B069007BE310 /* theraminTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6971800B069007BE310 /* theraminTests.m */; };
+		2534E6A31800B17D007BE310 /* TMDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6A21800B17D007BE310 /* TMDevicesViewController.m */; };
+		2534E6A51800B1EE007BE310 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E6A41800B1EE007BE310 /* CoreBluetooth.framework */; };
+		2534E6AD1800D4CA007BE310 /* TMBluetoothController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6AC1800D4CA007BE310 /* TMBluetoothController.m */; };
+		2534E6B21800D709007BE310 /* RXAbstractAPIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6AF1800D709007BE310 /* RXAbstractAPIController.m */; };
+		2534E6B31800D709007BE310 /* RXAbstractDataStoreController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6B11800D709007BE310 /* RXAbstractDataStoreController.m */; };
+		2534E6B51800D86C007BE310 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E6B41800D86C007BE310 /* CoreData.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2534E68F1800B069007BE310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2534E65E1800B069007BE310 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2534E6651800B069007BE310;
-			remoteInfo = theramin;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2534E6661800B069007BE310 /* theramin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theramin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,21 +28,24 @@
 		2534E66B1800B069007BE310 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2534E66D1800B069007BE310 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2534E6711800B069007BE310 /* theramin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "theramin-Info.plist"; sourceTree = "<group>"; };
-		2534E6731800B069007BE310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2534E6751800B069007BE310 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2534E6771800B069007BE310 /* theramin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "theramin-Prefix.pch"; sourceTree = "<group>"; };
 		2534E6781800B069007BE310 /* TMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMAppDelegate.h; sourceTree = "<group>"; };
 		2534E6791800B069007BE310 /* TMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMAppDelegate.m; sourceTree = "<group>"; };
-		2534E67C1800B069007BE310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		2534E67F1800B069007BE310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		2534E6811800B069007BE310 /* TMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TMViewController.h; sourceTree = "<group>"; };
 		2534E6821800B069007BE310 /* TMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TMViewController.m; sourceTree = "<group>"; };
 		2534E6841800B069007BE310 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2534E68A1800B069007BE310 /* theraminTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = theraminTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2534E68B1800B069007BE310 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		2534E6931800B069007BE310 /* theraminTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "theraminTests-Info.plist"; sourceTree = "<group>"; };
-		2534E6951800B069007BE310 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2534E6971800B069007BE310 /* theraminTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = theraminTests.m; sourceTree = "<group>"; };
+		2534E6A11800B17D007BE310 /* TMDevicesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMDevicesViewController.h; sourceTree = "<group>"; };
+		2534E6A21800B17D007BE310 /* TMDevicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDevicesViewController.m; sourceTree = "<group>"; };
+		2534E6A41800B1EE007BE310 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		2534E6AB1800D4CA007BE310 /* TMBluetoothController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMBluetoothController.h; sourceTree = "<group>"; };
+		2534E6AC1800D4CA007BE310 /* TMBluetoothController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMBluetoothController.m; sourceTree = "<group>"; };
+		2534E6AE1800D709007BE310 /* RXAbstractAPIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAbstractAPIController.h; sourceTree = "<group>"; };
+		2534E6AF1800D709007BE310 /* RXAbstractAPIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAbstractAPIController.m; sourceTree = "<group>"; };
+		2534E6B01800D709007BE310 /* RXAbstractDataStoreController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXAbstractDataStoreController.h; sourceTree = "<group>"; };
+		2534E6B11800D709007BE310 /* RXAbstractDataStoreController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXAbstractDataStoreController.m; sourceTree = "<group>"; };
+		2534E6B41800D86C007BE310 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,19 +53,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2534E6B51800D86C007BE310 /* CoreData.framework in Frameworks */,
+				2534E6A51800B1EE007BE310 /* CoreBluetooth.framework in Frameworks */,
 				2534E66C1800B069007BE310 /* CoreGraphics.framework in Frameworks */,
 				2534E66E1800B069007BE310 /* UIKit.framework in Frameworks */,
 				2534E66A1800B069007BE310 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2534E6871800B069007BE310 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2534E68C1800B069007BE310 /* XCTest.framework in Frameworks */,
-				2534E68E1800B069007BE310 /* UIKit.framework in Frameworks */,
-				2534E68D1800B069007BE310 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,8 +67,7 @@
 		2534E65D1800B069007BE310 = {
 			isa = PBXGroup;
 			children = (
-				2534E66F1800B069007BE310 /* theramin */,
-				2534E6911800B069007BE310 /* theraminTests */,
+				2534E66F1800B069007BE310 /* Theramin */,
 				2534E6681800B069007BE310 /* Frameworks */,
 				2534E6671800B069007BE310 /* Products */,
 			);
@@ -95,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				2534E6661800B069007BE310 /* theramin.app */,
-				2534E68A1800B069007BE310 /* theraminTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,6 +84,8 @@
 		2534E6681800B069007BE310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2534E6B41800D86C007BE310 /* CoreData.framework */,
+				2534E6A41800B1EE007BE310 /* CoreBluetooth.framework */,
 				2534E6691800B069007BE310 /* Foundation.framework */,
 				2534E66B1800B069007BE310 /* CoreGraphics.framework */,
 				2534E66D1800B069007BE310 /* UIKit.framework */,
@@ -111,48 +94,68 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2534E66F1800B069007BE310 /* theramin */ = {
+		2534E66F1800B069007BE310 /* Theramin */ = {
 			isa = PBXGroup;
 			children = (
-				2534E6781800B069007BE310 /* TMAppDelegate.h */,
-				2534E6791800B069007BE310 /* TMAppDelegate.m */,
-				2534E67B1800B069007BE310 /* Main_iPhone.storyboard */,
-				2534E67E1800B069007BE310 /* Main_iPad.storyboard */,
-				2534E6811800B069007BE310 /* TMViewController.h */,
-				2534E6821800B069007BE310 /* TMViewController.m */,
-				2534E6841800B069007BE310 /* Images.xcassets */,
+				2534E6A61800D161007BE310 /* Assets */,
+				2534E6AA1800D40F007BE310 /* 3rd Party */,
+				2534E6A71800D166007BE310 /* Theramin */,
 				2534E6701800B069007BE310 /* Supporting Files */,
 			);
+			name = Theramin;
 			path = theramin;
 			sourceTree = "<group>";
 		};
 		2534E6701800B069007BE310 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2534E6A81800D3FA007BE310 /* Core Data */,
 				2534E6711800B069007BE310 /* theramin-Info.plist */,
-				2534E6721800B069007BE310 /* InfoPlist.strings */,
 				2534E6751800B069007BE310 /* main.m */,
 				2534E6771800B069007BE310 /* theramin-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2534E6911800B069007BE310 /* theraminTests */ = {
+		2534E6A61800D161007BE310 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				2534E6971800B069007BE310 /* theraminTests.m */,
-				2534E6921800B069007BE310 /* Supporting Files */,
+				2534E6841800B069007BE310 /* Images.xcassets */,
 			);
-			path = theraminTests;
+			name = Assets;
 			sourceTree = "<group>";
 		};
-		2534E6921800B069007BE310 /* Supporting Files */ = {
+		2534E6A71800D166007BE310 /* Theramin */ = {
 			isa = PBXGroup;
 			children = (
-				2534E6931800B069007BE310 /* theraminTests-Info.plist */,
-				2534E6941800B069007BE310 /* InfoPlist.strings */,
+				2534E6781800B069007BE310 /* TMAppDelegate.h */,
+				2534E6791800B069007BE310 /* TMAppDelegate.m */,
+				2534E6811800B069007BE310 /* TMViewController.h */,
+				2534E6821800B069007BE310 /* TMViewController.m */,
+				2534E6A11800B17D007BE310 /* TMDevicesViewController.h */,
+				2534E6A21800B17D007BE310 /* TMDevicesViewController.m */,
+				2534E6AB1800D4CA007BE310 /* TMBluetoothController.h */,
+				2534E6AC1800D4CA007BE310 /* TMBluetoothController.m */,
 			);
-			name = "Supporting Files";
+			name = Theramin;
+			sourceTree = "<group>";
+		};
+		2534E6A81800D3FA007BE310 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		2534E6AA1800D40F007BE310 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				2534E6AE1800D709007BE310 /* RXAbstractAPIController.h */,
+				2534E6AF1800D709007BE310 /* RXAbstractAPIController.m */,
+				2534E6B01800D709007BE310 /* RXAbstractDataStoreController.h */,
+				2534E6B11800D709007BE310 /* RXAbstractDataStoreController.m */,
+			);
+			name = "3rd Party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,24 +178,6 @@
 			productReference = 2534E6661800B069007BE310 /* theramin.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2534E6891800B069007BE310 /* theraminTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2534E69E1800B069007BE310 /* Build configuration list for PBXNativeTarget "theraminTests" */;
-			buildPhases = (
-				2534E6861800B069007BE310 /* Sources */,
-				2534E6871800B069007BE310 /* Frameworks */,
-				2534E6881800B069007BE310 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2534E6901800B069007BE310 /* PBXTargetDependency */,
-			);
-			name = theraminTests;
-			productName = theraminTests;
-			productReference = 2534E68A1800B069007BE310 /* theraminTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -203,8 +188,8 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Appstruments;
 				TargetAttributes = {
-					2534E6891800B069007BE310 = {
-						TestTargetID = 2534E6651800B069007BE310;
+					2534E6651800B069007BE310 = {
+						DevelopmentTeam = WK93J67W9W;
 					};
 				};
 			};
@@ -222,7 +207,6 @@
 			projectRoot = "";
 			targets = (
 				2534E6651800B069007BE310 /* theramin */,
-				2534E6891800B069007BE310 /* theraminTests */,
 			);
 		};
 /* End PBXProject section */
@@ -232,18 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2534E6801800B069007BE310 /* Main_iPad.storyboard in Resources */,
 				2534E6851800B069007BE310 /* Images.xcassets in Resources */,
-				2534E67D1800B069007BE310 /* Main_iPhone.storyboard in Resources */,
-				2534E6741800B069007BE310 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2534E6881800B069007BE310 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2534E6961800B069007BE310 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,64 +227,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2534E6AD1800D4CA007BE310 /* TMBluetoothController.m in Sources */,
 				2534E6831800B069007BE310 /* TMViewController.m in Sources */,
+				2534E6B21800D709007BE310 /* RXAbstractAPIController.m in Sources */,
+				2534E6B31800D709007BE310 /* RXAbstractDataStoreController.m in Sources */,
 				2534E6761800B069007BE310 /* main.m in Sources */,
+				2534E6A31800B17D007BE310 /* TMDevicesViewController.m in Sources */,
 				2534E67A1800B069007BE310 /* TMAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2534E6861800B069007BE310 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2534E6981800B069007BE310 /* theraminTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2534E6901800B069007BE310 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2534E6651800B069007BE310 /* theramin */;
-			targetProxy = 2534E68F1800B069007BE310 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		2534E6721800B069007BE310 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2534E6731800B069007BE310 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		2534E67B1800B069007BE310 /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2534E67C1800B069007BE310 /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		2534E67E1800B069007BE310 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2534E67F1800B069007BE310 /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		2534E6941800B069007BE310 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2534E6951800B069007BE310 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2534E6991800B069007BE310 /* Debug */ = {
@@ -393,6 +319,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
 				INFOPLIST_FILE = "theramin/theramin-Info.plist";
@@ -406,53 +333,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
 				INFOPLIST_FILE = "theramin/theramin-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		2534E69F1800B069007BE310 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/theramin.app/theramin";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "theraminTests/theraminTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		2534E6A01800B069007BE310 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/theramin.app/theramin";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
-				INFOPLIST_FILE = "theraminTests/theraminTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -473,14 +359,6 @@
 			buildConfigurations = (
 				2534E69C1800B069007BE310 /* Debug */,
 				2534E69D1800B069007BE310 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		2534E69E1800B069007BE310 /* Build configuration list for PBXNativeTarget "theraminTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2534E69F1800B069007BE310 /* Debug */,
-				2534E6A01800B069007BE310 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
