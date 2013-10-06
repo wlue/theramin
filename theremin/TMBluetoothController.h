@@ -28,9 +28,6 @@ typedef NS_ENUM(NSInteger, TMBluetoothMode) {
 
 + (instancetype)sharedInstance;
 
-- (void)subscribeObject:(id <TMBluetoothPeripheralSubscriber>)object toRSSIForPeripheral:(CBPeripheral *)peripheral;
-- (void)unsubscribeObject:(id <TMBluetoothPeripheralSubscriber>)object toRSSIForPeripheral:(CBPeripheral *)peripheral;
-
 - (void)startScanning;
 - (void)stopScanning;
 

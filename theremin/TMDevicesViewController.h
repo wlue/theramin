@@ -8,6 +8,7 @@
 
 #import "TMViewController.h"
 
+@class TMPeripheral;
 @protocol TMDevicesViewControllerDelegate;
 
 
@@ -22,7 +23,7 @@
 @protocol TMDevicesViewControllerDelegate
 
 - (void)devicesViewController:(TMDevicesViewController *)viewController
-          didSelectPeripheral:(CBPeripheral *)peripheral;
+          didSelectPeripheral:(TMPeripheral *)peripheral;
 
 - (void)devicesViewControllerDidClose:(TMDevicesViewController *)viewController;
 

@@ -7,16 +7,21 @@
 //
 
 #import "TMRootViewController.h"
+#import "TMPeripheral.h"
 #import "TMEngineController.h"
 #import "TMDevicesViewController.h"
 #import "TMBluetoothController.h"
 
+#pragma mark - Definitions
+
+static void *TMPitchPeripheralKey = &TMPitchPeripheralKey;
+static void *TMPitchPeripheralRSSIKey = &TMPitchPeripheralRSSIKey;
 
 #pragma mark - Private Interface
 
-@interface TMRootViewController () <TMDevicesViewControllerDelegate, TMBluetoothPeripheralSubscriber, CBPeripheralDelegate>
+@interface TMRootViewController () <TMDevicesViewControllerDelegate>
 
-@property (nonatomic, strong) CBPeripheral *pitchPeripheral;
+@property (nonatomic, strong) TMPeripheral *pitchPeripheral;
 @property (nonatomic, strong) UISlider *volumeSlider;
 
 - (void)devicesButtonPressed:(id)sender;
@@ -40,7 +45,18 @@
 
     self.title = @"Theremin";
 
+    [self addObserver:self forKeyPath:RXSelfKeyPath(pitchPeripheral) options:NSKeyValueObservingOptionOld context:TMPitchPeripheralKey];
+
     return self;
+}
+
+- (void)dealloc
+{
+    [self removeObserver:self forKeyPath:RXSelfKeyPath(pitchPeripheral) context:TMPitchPeripheralKey];
+
+    if (self.pitchPeripheral) {
+       [self.pitchPeripheral removeObserver:self forKeyPath:RXKeyPath(self.pitchPeripheral, rssi) context:TMPitchPeripheralRSSIKey];
+    }
 }
 
 #pragma mark - UIViewController
@@ -89,44 +105,83 @@
 
     [[TMEngineController sharedInstance] play];
     self.volumeSlider.value = [[TMEngineController sharedInstance] volume];
+
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (context == TMPitchPeripheralKey) {
+        if (self.pitchPeripheral != nil) {
+            [self.pitchPeripheral addObserver:self
+                                   forKeyPath:RXKeyPath(self.pitchPeripheral, rssi)
+                                      options:NSKeyValueObservingOptionInitial
+                                      context:TMPitchPeripheralRSSIKey];
+        } else {
+            NSLog(@"Change: %@", change);
+            TMPeripheral *peripheral = nil; // TODO
+            [peripheral removeObserver:self
+                                      forKeyPath:RXKeyPath(self.pitchPeripheral, rssi)
+                                         context:TMPitchPeripheralRSSIKey];
+        }
+    } else if (context == TMPitchPeripheralRSSIKey) {
+        TMPeripheral *peripheral = object;
+        NSInteger rssi = peripheral.rssi.integerValue;
+        if (rssi == 127) {
+            return;
+        }
+
+        static const NSInteger ROLLING_SIZE = 5;
+        static NSMutableArray *rolling = nil;
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            rolling = [[NSMutableArray alloc] initWithCapacity:ROLLING_SIZE];
+        });
+
+        NSInteger lower = 220;
+        NSInteger upper = 880;
+
+        NSInteger rLower = -60;
+        NSInteger rUpper = -10;
+
+        if (rolling.count >= 10) {
+            [rolling removeLastObject];
+        }
+        [rolling insertObject:@(rssi) atIndex:0];
+
+        double rollingRSSI = 0;
+        for (NSNumber *roll in rolling) {
+            rollingRSSI += roll.doubleValue;
+        }
+        rollingRSSI /= rolling.count;
+
+        double progress = ((double)RXBoundedValue(rollingRSSI, rLower, rUpper) - rLower) / (rUpper - rLower);
+        double freq = lower + (upper - lower) * progress;
+
+        [[TMEngineController sharedInstance] setFrequency:freq];
+
+        NSLog(@"Rolling RSSI change: %f, %d", rollingRSSI, rssi);
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 #pragma mark - TMDevicesViewControllerDelegate
 
 - (void)devicesViewController:(TMDevicesViewController *)viewController
-          didSelectPeripheral:(CBPeripheral *)peripheral
+          didSelectPeripheral:(TMPeripheral *)peripheral
 {
     NSLog(@"Selected Peripheral: %@", peripheral);
 
-    peripheral.delegate = self;
-    [self dismissViewControllerAnimated:YES completion:nil];
+    self.pitchPeripheral = peripheral;
 
-    [[TMBluetoothController sharedInstance] subscribeObject:self toRSSIForPeripheral:peripheral];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)devicesViewControllerDidClose:(TMDevicesViewController *)viewController
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - TMBluetoothPeripheralSubscriber
-
-- (void)bluetoothController:(TMBluetoothController *)controller didUpdatePeripheral:(CBPeripheral *)peripheral
-{
-//    NSLog(@"Received sub message from %@ with RSSI %@", peripheral, peripheral.RSSI);
-    [peripheral readRSSI];
-}
-
-#pragma mark - CBPeripheralDelegate
-
-- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
-{
-    if (error) {
-        NSLog(@"Peripheral RSSI Error: %@", error);
-        return;
-    }
-
-    NSLog(@"Peripheral updated RSSI: %@", peripheral.RSSI);
 }
 
 #pragma mark - Private Methods

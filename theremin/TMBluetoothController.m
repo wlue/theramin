@@ -23,17 +23,12 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
 @property (nonatomic, strong) CBCentralManager *central;
 @property (nonatomic, strong) CBPeripheralManager *peripheral;
 
-@property (nonatomic, strong) NSTimer *subTimer;
-@property (nonatomic, strong) NSMutableDictionary *peripheralSubscribers;
-
 @property (nonatomic, strong) NSMutableDictionary *deviceMap;
 @property (nonatomic, strong) NSMutableArray *connectedDevices;
 
 @property (nonatomic, strong) dispatch_queue_t queue;
 
 @property (nonatomic, strong) NSManagedObjectContext *context;
-
-- (void)subscriptionFired:(NSTimer *)timer;
 
 @end
 
@@ -66,8 +61,6 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
     self.queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
     self.context = [[TMDevicesAPIController sharedInstance] managedObjectContext];
 
-    self.subTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(subscriptionFired:) userInfo:nil repeats:YES];
-    self.peripheralSubscribers = [[NSMutableDictionary alloc] init];
     self.deviceMap = [[NSMutableDictionary alloc] init];
     self.connectedDevices = [[NSMutableArray alloc] init];
 
@@ -84,44 +77,11 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
         NSLog(@"Start scanning for peripherals.");
 
         NSDictionary *options = @{
-            CBCentralManagerScanOptionAllowDuplicatesKey: @NO
+            CBCentralManagerScanOptionAllowDuplicatesKey: @YES
         };
 
         [self.central scanForPeripheralsWithServices:nil options:options];
     }
-}
-
-- (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
-{
-    NSLog(@"Connected with peripheral: %@", peripheral);
-
-    [self.connectedDevices addObject:peripheral];
-
-    NSDictionary *userInfo = @{
-        @"peripheral": peripheral
-    };
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TMBluetoothPeripheralConnectedNotification
-                                                        object:self
-                                                      userInfo:userInfo];
-}
-
-- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
-{
-    NSLog(@"Failed to connect with peripheral: %@", [error localizedDescription]);
-}
-
-- (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
-{
-    NSDictionary *userInfo = @{
-        @"peripheral": peripheral
-    };
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:TMBluetoothPeripheralDisconnectedNotification
-                                                        object:self
-                                                      userInfo:userInfo];
-
-    [self.connectedDevices removeObject:peripheral];
 }
 
 - (void)centralManager:(CBCentralManager *)central
@@ -148,25 +108,15 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
                 model.rssi = RSSI;
             }
         } else {
-            if (RSSI.integerValue == 127) {
-                [self.context deleteObject:model];
-            } else {
+//            if (RSSI.integerValue == 127) {
+//                [self.context deleteObject:model];
+//            } else {
                 model.rssi = RSSI;
-            }
+//            }
         }
 
         [self.context save];
     }];
-}
-
-- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
-{
-    if (error) {
-        NSLog(@"Peripheral RSSI Error: %@", error);
-        return;
-    }
-
-    NSLog(@"Peripheral updated RSSI: %@", peripheral.RSSI);
 }
 
 #pragma mark - CBPeripheralManagerDelegate
@@ -219,16 +169,6 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
 
 #pragma mark - Public Methods
 
-- (void)subscribeObject:(id)object toRSSIForPeripheral:(CBPeripheral *)peripheral
-{
-    self.peripheralSubscribers[peripheral.identifier.UUIDString] = object;
-}
-
-- (void)unsubscribeObject:(id)object toRSSIForPeripheral:(CBPeripheral *)peripheral
-{
-    self.peripheralSubscribers[peripheral.identifier.UUIDString] = nil;
-}
-
 #pragma mark Central Mode
 
 - (void)startScanning
@@ -237,13 +177,6 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
         self.central = [[CBCentralManager alloc] initWithDelegate:self
                                                             queue:self.queue];
     } else {
-        NSLog(@"Start scanning for peripherals.");
-
-        NSDictionary *options = @{
-            CBCentralManagerScanOptionAllowDuplicatesKey: @NO
-        };
-
-        [self.central scanForPeripheralsWithServices:nil options:options];
     }
 }
 
@@ -302,16 +235,5 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
 }
 
 #pragma mark - Private Methods
-
-- (void)subscriptionFired:(NSTimer *)timer
-{
-    for (NSString *UUID in self.peripheralSubscribers.allKeys) {
-        CBPeripheral *peripheral = self.deviceMap[UUID];
-        if (peripheral) {
-            id <TMBluetoothPeripheralSubscriber> subscriber = self.peripheralSubscribers[UUID];
-            [subscriber bluetoothController:self didUpdatePeripheral:peripheral];
-        }
-    }
-}
 
 @end
