@@ -89,11 +89,7 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
      advertisementData:(NSDictionary *)advertisementData
                   RSSI:(NSNumber *)RSSI
 {
-//    NSLog(@"Discovered peripheral: %@", peripheral.name);
-//    NSLog(@"RSSI: %@", RSSI);
-
     NSString *UUID = [peripheral.identifier UUIDString];
-    self.deviceMap[UUID] = peripheral;
 
     [self.context performBlock:^{
         NSFetchRequest *request = [TMPeripheral createFetchRequest];
@@ -108,11 +104,9 @@ NSString *const TMBluetoothPeripheralDisconnectedNotification = @"TMBluetoothPer
                 model.rssi = RSSI;
             }
         } else {
-//            if (RSSI.integerValue == 127) {
-//                [self.context deleteObject:model];
-//            } else {
+            if (RSSI.integerValue != 127) {
                 model.rssi = RSSI;
-//            }
+            }
         }
 
         [self.context save];
