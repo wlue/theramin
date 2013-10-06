@@ -8,6 +8,7 @@
 
 #import "TMRootViewController.h"
 #import "TMDevicesViewController.h"
+#import "TMBluetoothController.h"
 
 
 #pragma mark - Private Interface
@@ -15,6 +16,7 @@
 @interface TMRootViewController () <TMDevicesViewControllerDelegate>
 
 - (void)devicesButtonPressed:(id)sender;
+- (void)modeSwitchDidChange:(id)sender;
 
 @end
 
@@ -31,7 +33,7 @@
         return nil;
     }
 
-    self.title = @"Theramin";
+    self.title = @"Theremin";
 
     return self;
 }
@@ -47,6 +49,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UISwitch *modeSwitch = [[UISwitch alloc] init];
+    modeSwitch.on = ([[TMBluetoothController sharedInstance] mode] == TMBluetoothModeCentral);
+    [modeSwitch addTarget:self action:@selector(modeSwitchDidChange:) forControlEvents:UIControlEventValueChanged];
+
+    UIBarButtonItem *switchItem = [[UIBarButtonItem alloc] initWithCustomView:modeSwitch];
+    self.navigationItem.leftBarButtonItem = switchItem;
 
     UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Nearby Devices"
                                                                       style:UIBarButtonItemStylePlain
@@ -78,6 +87,24 @@
 
     navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
     [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+- (void)modeSwitchDidChange:(id)sender
+{
+    UISwitch *switchView = sender;
+
+    TMBluetoothController *controller = [TMBluetoothController sharedInstance];
+    if (switchView.on) {
+        NSLog(@"Switch mode to Central.");
+
+        controller.mode = TMBluetoothModeCentral;
+        [controller stopBroadcasting];
+    } else {
+        NSLog(@"Switch mode to Peripheral.");
+
+        controller.mode = TMBluetoothModePeripheral;
+        [controller startBroadcasting];
+    }
 }
 
 @end

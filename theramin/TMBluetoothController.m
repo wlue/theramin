@@ -12,10 +12,12 @@
 
 #pragma mark - Private Interface
 
-@interface TMBluetoothController () <CBCentralManagerDelegate, CBPeripheralManagerDelegate>
+@interface TMBluetoothController () <CBCentralManagerDelegate, CBPeripheralDelegate, CBPeripheralManagerDelegate>
 
 @property (nonatomic, strong) CBCentralManager *central;
 @property (nonatomic, strong) CBPeripheralManager *peripheral;
+
+@property (nonatomic, strong) NSMutableDictionary *deviceMap;
 
 @property (nonatomic, strong) dispatch_queue_t queue;
 
@@ -53,6 +55,7 @@
 
     self.queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0L);
     self.context = [[TMDevicesAPIController sharedInstance] managedObjectContext];
+    self.deviceMap = [[NSMutableDictionary alloc] init];
 
     return self;
 }
@@ -67,6 +70,15 @@
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral
 {
     NSLog(@"Connected with peripheral: %@", peripheral);
+
+    peripheral.delegate = self;
+    [peripheral readRSSI];
+
+}
+
+- (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    NSLog(@"Failed to connect with peripheral: %@", [error localizedDescription]);
 }
 
 - (void)centralManager:(CBCentralManager *)central
@@ -74,8 +86,8 @@
      advertisementData:(NSDictionary *)advertisementData
                   RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"Discovered peripheral: %@", peripheral.name);
-    NSLog(@"RSSI: %@", RSSI);
+//    NSLog(@"Discovered peripheral: %@", peripheral.name);
+//    NSLog(@"RSSI: %@", RSSI);
 
     NSString *UUID = [peripheral.identifier UUIDString];
     [self.context performBlock:^{
@@ -84,15 +96,35 @@
 
         TMPeripheral *model = [[self.context executeFetchRequest:request] lastObject];
         if (!model) {
-            model = [TMPeripheral instanceFromManagedObjectContext:self.context];
-            model.name = peripheral.name;
-            model.uuid = UUID;
-        }
+            if (RSSI.integerValue != 127) {
+                model = [TMPeripheral instanceFromManagedObjectContext:self.context];
+                model.name = peripheral.name;
+                model.uuid = UUID;
+                model.rssi = RSSI;
 
-        model.rssi = RSSI;
+                self.deviceMap[UUID] = peripheral;
+            }
+        } else {
+            if (RSSI.integerValue == 127) {
+                [self.context deleteObject:model];
+                [self.deviceMap removeObjectForKey:model.uuid];
+            } else {
+                model.rssi = RSSI;
+            }
+        }
 
         [self.context save];
     }];
+}
+
+- (void)peripheralDidUpdateRSSI:(CBPeripheral *)peripheral error:(NSError *)error
+{
+    if (error) {
+        NSLog(@"Peripheral RSSI Error: %@", [error localizedDescription]);
+        return;
+    }
+
+    NSLog(@"Peripheral updated RSSI: %@", peripheral.RSSI);
 }
 
 #pragma mark - CBPeripheralManagerDelegate
@@ -101,7 +133,15 @@
 {
     NSLog(@"Peripheral did update state: %@", @(peripheral.state));
 
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        NSLog(@"Begin advertising.");
 
+        CBUUID *UUID = [CBUUID UUIDWithString:TM_PERIPHERAL_UUID];
+        [self.peripheral startAdvertising:@{
+            CBAdvertisementDataLocalNameKey: @"Theremin",
+            CBAdvertisementDataServiceUUIDsKey: @[UUID]
+        }];
+    }
 }
 
 - (void)peripheralManagerDidStartAdvertising:(CBPeripheralManager *)peripheral
@@ -109,8 +149,10 @@
 {
     if (error) {
         NSLog(@"Error advertising: %@", [error localizedDescription]);
+        return;
     }
 
+    NSLog(@"Started advertising.");
 }
 
 #pragma mark - Properties
@@ -130,7 +172,12 @@
     }
 }
 
+#pragma mark - CBPeripheralDelegate
+
+
 #pragma mark - Public Methods
+
+#pragma mark Central Mode
 
 - (void)startScanning
 {
@@ -153,6 +200,7 @@
     NSLog(@"Stop scanning for peripherals.");
 
     [self.central stopScan];
+    [self.deviceMap removeAllObjects];
 
     // Delete all the stored devices first.
     [self.context performBlock:^{
@@ -167,21 +215,30 @@
     }];
 }
 
+- (void)connectPeripheral:(TMPeripheral *)peripheralModel
+{
+    CBPeripheral *peripheral = self.deviceMap[peripheralModel.uuid];
+    if (!peripheral) {
+        NSLog(@"Warning: Couldn't find and connect peripheral with UUID %@", peripheralModel.uuid);
+        return;
+    }
+
+    [self.central connectPeripheral:peripheral options:nil];
+}
+
+#pragma mark Peripheral Mode
+
 - (void)startBroadcasting
 {
     if (!self.peripheral) {
         self.peripheral = [[CBPeripheralManager alloc] initWithDelegate:self queue:self.queue];
     }
-
-    CBUUID *UUID = [CBUUID UUIDWithString:TM_PERIPHERAL_UUID];
-    [self.peripheral startAdvertising:@{
-        CBAdvertisementDataServiceUUIDsKey: @[UUID]
-    }];
 }
 
 - (void)stopBroadcasting
 {
-
+    [self.peripheral stopAdvertising];
+    self.peripheral = nil;
 }
 
 #pragma mark - Private Methods

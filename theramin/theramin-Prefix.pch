@@ -16,5 +16,7 @@
     #import <CoreData/CoreData.h>
     #import <CoreBluetooth/CoreBluetooth.h>
 
+    #import <TheAmazingAudioEngine/TheAmazingAudioEngine.h>
+
     #import "TMDefinitions.h"
 #endif

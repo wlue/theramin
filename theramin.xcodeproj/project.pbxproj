@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2522DA141801450A0077C7F1 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2522DA131801450A0077C7F1 /* CoreAudio.framework */; };
+		2522DA1C180145710077C7F1 /* libTheAmazingAudioEngine.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2522DA1B180145520077C7F1 /* libTheAmazingAudioEngine.a */; };
+		2522DA21180146880077C7F1 /* TMEngineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2522DA20180146880077C7F1 /* TMEngineController.m */; };
+		2522DA23180147D90077C7F1 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2522DA22180147D90077C7F1 /* AudioToolbox.framework */; };
+		2522DA25180147DE0077C7F1 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2522DA24180147DE0077C7F1 /* Accelerate.framework */; };
 		2534E66A1800B069007BE310 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E6691800B069007BE310 /* Foundation.framework */; };
 		2534E66C1800B069007BE310 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E66B1800B069007BE310 /* CoreGraphics.framework */; };
 		2534E66E1800B069007BE310 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2534E66D1800B069007BE310 /* UIKit.framework */; };
@@ -32,7 +37,23 @@
 		2534E6D8180108D0007BE310 /* UIView+RXAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2534E6D7180108D0007BE310 /* UIView+RXAdditions.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2522DA1A180145520077C7F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2522DA16180145510077C7F1 /* TheAmazingAudioEngine.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4C215CEC1523A7D500D36CAD;
+			remoteInfo = TheAmazingAudioEngine;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		2522DA131801450A0077C7F1 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		2522DA16180145510077C7F1 /* TheAmazingAudioEngine.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TheAmazingAudioEngine.xcodeproj; path = Frameworks/TheAmazingAudioEngine/TheAmazingAudioEngine.xcodeproj; sourceTree = "<group>"; };
+		2522DA1F180146880077C7F1 /* TMEngineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMEngineController.h; sourceTree = "<group>"; };
+		2522DA20180146880077C7F1 /* TMEngineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMEngineController.m; sourceTree = "<group>"; };
+		2522DA22180147D90077C7F1 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		2522DA24180147DE0077C7F1 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2534E6661800B069007BE310 /* theramin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = theramin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2534E6691800B069007BE310 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2534E66B1800B069007BE310 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,17 +103,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2522DA25180147DE0077C7F1 /* Accelerate.framework in Frameworks */,
+				2522DA23180147D90077C7F1 /* AudioToolbox.framework in Frameworks */,
+				2522DA141801450A0077C7F1 /* CoreAudio.framework in Frameworks */,
 				2534E6B51800D86C007BE310 /* CoreData.framework in Frameworks */,
 				2534E6A51800B1EE007BE310 /* CoreBluetooth.framework in Frameworks */,
 				2534E66C1800B069007BE310 /* CoreGraphics.framework in Frameworks */,
 				2534E66E1800B069007BE310 /* UIKit.framework in Frameworks */,
 				2534E66A1800B069007BE310 /* Foundation.framework in Frameworks */,
+				2522DA1C180145710077C7F1 /* libTheAmazingAudioEngine.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2522DA15180145390077C7F1 /* TheAmazingAudioEngine */ = {
+			isa = PBXGroup;
+			children = (
+				2522DA16180145510077C7F1 /* TheAmazingAudioEngine.xcodeproj */,
+			);
+			name = TheAmazingAudioEngine;
+			sourceTree = "<group>";
+		};
+		2522DA17180145510077C7F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2522DA1B180145520077C7F1 /* libTheAmazingAudioEngine.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2522DA1E1801467F0077C7F1 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				2522DA1F180146880077C7F1 /* TMEngineController.h */,
+				2522DA20180146880077C7F1 /* TMEngineController.m */,
+			);
+			name = Engine;
+			sourceTree = "<group>";
+		};
 		2534E65D1800B069007BE310 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +163,10 @@
 		2534E6681800B069007BE310 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2522DA15180145390077C7F1 /* TheAmazingAudioEngine */,
+				2522DA24180147DE0077C7F1 /* Accelerate.framework */,
+				2522DA22180147D90077C7F1 /* AudioToolbox.framework */,
+				2522DA131801450A0077C7F1 /* CoreAudio.framework */,
 				2534E6B41800D86C007BE310 /* CoreData.framework */,
 				2534E6A41800B1EE007BE310 /* CoreBluetooth.framework */,
 				2534E6691800B069007BE310 /* Foundation.framework */,
@@ -158,6 +212,7 @@
 		2534E6A71800D166007BE310 /* Theramin */ = {
 			isa = PBXGroup;
 			children = (
+				2522DA1E1801467F0077C7F1 /* Engine */,
 				2534E6C618010703007BE310 /* Models */,
 				2534E6BC1800EA13007BE310 /* Data Controllers */,
 				2534E6BA1800E2F5007BE310 /* Controllers */,
@@ -292,12 +347,28 @@
 			mainGroup = 2534E65D1800B069007BE310;
 			productRefGroup = 2534E6671800B069007BE310 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2522DA17180145510077C7F1 /* Products */;
+					ProjectRef = 2522DA16180145510077C7F1 /* TheAmazingAudioEngine.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2534E6651800B069007BE310 /* theramin */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2522DA1B180145520077C7F1 /* libTheAmazingAudioEngine.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTheAmazingAudioEngine.a;
+			remoteRef = 2522DA1A180145520077C7F1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2534E6641800B069007BE310 /* Resources */ = {
@@ -319,6 +390,7 @@
 				2534E6CF18010742007BE310 /* RXModel.m in Sources */,
 				2534E6AD1800D4CA007BE310 /* TMBluetoothController.m in Sources */,
 				2534E6831800B069007BE310 /* TMViewController.m in Sources */,
+				2522DA21180146880077C7F1 /* TMEngineController.m in Sources */,
 				2534E6D21801076B007BE310 /* TMPeripheral.m in Sources */,
 				2534E6B21800D709007BE310 /* RXAbstractAPIController.m in Sources */,
 				2534E6C5180106B7007BE310 /* Devices.xcdatamodeld in Sources */,
@@ -420,6 +492,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					Frameworks/TheAmazingAudioEngine,
+				);
 				INFOPLIST_FILE = "theramin/theramin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -435,6 +512,11 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "theramin/theramin-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					Frameworks/TheAmazingAudioEngine,
+				);
 				INFOPLIST_FILE = "theramin/theramin-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

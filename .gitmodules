@@ -1,0 +1,3 @@
+[submodule "Frameworks/TheAmazingAudioEngine"]
+	path = Frameworks/TheAmazingAudioEngine
+	url = https://github.com/TheAmazingAudioEngine/TheAmazingAudioEngine.git

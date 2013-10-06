@@ -12,6 +12,8 @@
 	<dict>
 		<key>7DF2F866-2633-4120-8256-99DFA0D22F22</key>
 		<string>ssh://github.com/wlue/theramin.git</string>
+		<key>E38B22B3-42AC-405B-924D-2866B87FBFC1</key>
+		<string>https://github.com/TheAmazingAudioEngine/TheAmazingAudioEngine.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>theramin.xcodeproj/project.xcworkspace</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>7DF2F866-2633-4120-8256-99DFA0D22F22</key>
 		<string>../..</string>
+		<key>E38B22B3-42AC-405B-924D-2866B87FBFC1</key>
+		<string>../../Frameworks/TheAmazingAudioEngine</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/wlue/theramin.git</string>
@@ -28,6 +32,14 @@
 	<string>7DF2F866-2633-4120-8256-99DFA0D22F22</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E38B22B3-42AC-405B-924D-2866B87FBFC1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TheAmazingAudioEngine</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

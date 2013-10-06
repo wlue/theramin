@@ -87,7 +87,9 @@
 {
     [super viewDidAppear:animated];
 
-    [[TMBluetoothController sharedInstance] startScanning];
+    if ([[TMBluetoothController sharedInstance] mode] == TMBluetoothModeCentral) {
+        [[TMBluetoothController sharedInstance] startScanning];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -106,8 +108,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    TMPeripheral *peripheral = (TMPeripheral *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    TMPeripheral *peripheral = (TMPeripheral *)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    if (!peripheral) {
+        return;
+    }
+
+    [[TMBluetoothController sharedInstance] connectPeripheral:peripheral];
 }
 
 #pragma mark - UITableViewDataSource

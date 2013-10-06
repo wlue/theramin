@@ -12,6 +12,8 @@ typedef NS_ENUM(NSInteger, TMBluetoothMode) {
 };
 
 
+@class TMPeripheral;
+
 @interface TMBluetoothController : NSObject
 
 @property (nonatomic, assign) TMBluetoothMode mode;
@@ -20,6 +22,8 @@ typedef NS_ENUM(NSInteger, TMBluetoothMode) {
 
 - (void)startScanning;
 - (void)stopScanning;
+
+- (void)connectPeripheral:(TMPeripheral *)peripheralModel;
 
 - (void)startBroadcasting;
 - (void)stopBroadcasting;
